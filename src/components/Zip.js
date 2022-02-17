@@ -141,13 +141,11 @@ const Zip = (props) => {
       entries[fileIndex].filename.length
     );
     const blobWriter = new zip.BlobWriter("application/" + string);
-    console.log(entries[fileIndex]);
     const fileData = await entries[fileIndex].getData(blobWriter);
     setDownloadableURL(URL.createObjectURL(fileData));
   };
 
   useEffect(() => {
-    console.log(selectedFileObject);
     if (selectedFileObject.selected != null) {
       downloadFile(selectedFileObject.selected[0]);
     }
@@ -169,31 +167,21 @@ const Zip = (props) => {
     <>
       {!displayTree && (
         <div className="container-sm cont">
-          <div className="upload">
-            <form onSubmit={formHandler}>
-              <button className="btn btn-outline-secondary btn-lg upload">
-                <input
-                  multiple
-                  type="file"
-                  name="file"
-                  className="sizing"
-                  onChange={inputHandler}
-                />
-              </button>
-              &nbsp;&nbsp;&nbsp;
-              <button type="submit" className="btn btn-primary ">
-                Extract ZIP
-              </button>
-              {selectedFileObject.selected && (
-                <a
-                  href={downloadableURL}
-                  download={selectedFileObject.selected[0]}
-                >
-                  <button type="button">click me</button>
-                </a>
-              )}
-            </form>
-          </div>
+          <form onSubmit={formHandler} className="upload">
+            <h3 className="text-center">Upload an Archive</h3>
+            <button className="btn btn-outline-secondary btn-lg upload">
+              <input
+                multiple
+                type="file"
+                name="file"
+                className="sizing"
+                onChange={inputHandler}
+              />
+            </button>
+            <button type="submit" className="btn btn-primary mbl">
+              Extract ZIP
+            </button>
+          </form>
         </div>
       )}
       {displayTree && (

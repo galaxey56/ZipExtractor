@@ -1,9 +1,12 @@
 .upload {
-  margin-left: 30%;
+  margin-left: 25%;
   height: 40%;
-  width: 40%;
+  width: 50%;
   padding-top: 10%;
   padding-bottom: 10%;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
 }
 .sizing {
   font-size: 0.75rem;
@@ -13,4 +16,23 @@
   box-shadow: 0px 0px 1px 0px black;
   height: fit-content;
   border: dashed 1px black;
+}
+.mbl {
+  margin-left: 40%;
+  margin-top: 2%;
+  width: fit-content;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .upload {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .mbl {
+    margin-top: 2%;
+    margin-left: 30%;
+  }
 }
